@@ -62,11 +62,12 @@ router.post('/eliminar/:id', function(req, res, next) {
 });
 router.post('/actualizar', function(req, res, next) {
   //conn.connect();
+  id=req.body.user_id;
   fname=req.body.first_name;
   lname=req.body.last_name;
   user=req.body.user;
   password=req.body.password;
-  conn.query('UPDATE users SET first_name="'+fname+'",last_name="'+lname+'",user="'+user+'",password="'+password+'" WHERE user="'+user+'";', function (error, results, fields) {
+  conn.query('UPDATE `users` SET `first_name`="'+fname+'",`last_name`="'+lname+'",`user`="'+user+'",`password`="'+password+'" WHERE `user_id`="'+id+'" ;', function (error, results, fields) {
     if (error){
       res.status(422).json([]);
     }else{
