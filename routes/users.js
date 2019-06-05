@@ -10,9 +10,7 @@ router.get('/mostrar', function(req, res, next) {
       res.status(422).json([]);
     }else{
       res.status(200).json(results);
-    }
-
-    
+    }    
   });
   //conn.end();
 });
@@ -47,6 +45,9 @@ router.post('/insertar', function(req, res, next) {
   });
   //conn.end();
 });
+
+
+
 router.post('/eliminar/:id', function(req, res, next) {
   //conn.connect();
   output=req.params.id;

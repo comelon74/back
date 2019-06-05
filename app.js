@@ -7,13 +7,14 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var conexionBD =require('./routes/conexionBD');
+var citas =require('./routes/citas');
 
 var app = express();
-
+//Crear la conexion con la base de datos para cualquier archivo
 app.get(conexionBD, function (req, res) {
   res.send(res);
 });
-//Permitir CORS
+//Permitir CORS para la conexion con express
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/citas', citas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
