@@ -5,7 +5,7 @@ var conn = require('./conexionBD');
 /* GET users listing. */
 router.get('/mostrar', function(req, res, next) {
   //conn.connect();
-  conn.query('select * from users', function (error, results, fields) {
+  conn.query('SELECT p.pd_id, p.pa_nombre, p.pa_apellido_p, p.pa_apellido_m, p.pa_ocupacion, p.pa_estado_civil, p.pa_escolaridad, p.pa_alcohol, p.pa_drogas, p.pa_tabaco, o.oc_id, o.oc_nombre, e.ec_id, e.ec_nombre, s.es_id, s.es_nombre FROM a_pacientes AS p LEFT JOIN w_ocupacion AS o ON p.pa_ocupacion = o.oc_id LEFT JOIN z_estado_civil AS e ON e.ec_id = p.pa_estado_civil LEFT JOIN z_escolaridad AS s ON p.pa_escolaridad = s.es_id', function (error, results, fields) {
     if (error) {
       res.status(422).json([]);
     }else{
@@ -17,7 +17,7 @@ router.get('/mostrar', function(req, res, next) {
 router.get('/mostrar1/:id', function(req, res, next) {
   //conn.connect();
   output=req.params.id;
-  conn.query('select * from users where user="'+output+'"', function (error, results, fields) {
+  conn.query('SELECT p.pd_id, p.pa_nombre, p.pa_apellido_p, p.pa_apellido_m, p.pa_ocupacion, p.pa_estado_civil, p.pa_escolaridad, p.pa_alcohol, p.pa_drogas, p.pa_tabaco, o.oc_id, o.oc_nombre, e.ec_id, e.ec_nombre, s.es_id, s.es_nombre FROM a_pacientes AS p LEFT JOIN w_ocupacion AS o ON p.pa_ocupacion = o.oc_id LEFT JOIN z_estado_civil AS e ON e.ec_id = p.pa_estado_civil LEFT JOIN z_escolaridad AS s ON p.pa_escolaridad = s.es_id WHERE p.pd_id ='+output+'', function (error, results, fields) {
     if (error) {
       res.status(422).json([]);
     }else{
