@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var conexionBD =require('./routes/conexionBD');
 var citas =require('./routes/citas');
+var doctores =require('./routes/doctores');
+
 
 var app = express();
 //Crear la conexion con la base de datos para cualquier archivo
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/citas', citas);
+app.use('/doctores',doctores);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
