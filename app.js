@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var conexionBD =require('./routes/conexionBD');
 var citas =require('./routes/citas');
 var doctores =require('./routes/doctores');
+var usuarioConexion =require('./routes/usuarioConexion');
 
 
 var app = express();
@@ -37,6 +38,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/citas', citas);
 app.use('/doctores',doctores);
+app.use('/usuarioConexion',usuarioConexion);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
